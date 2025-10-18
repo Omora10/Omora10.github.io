@@ -207,5 +207,24 @@
   <footer>
     <p>¿Tienes dudas o quieres mi ayuda para elegir tu plan?</p>
     <p>📧 <a href="mailto:moradostin27@gmail.com">moradostin27@gmail.com</a>  
-    | 📱 Whats
+    | 📱 WhatsApp: 322 243 8349</p>
+    <p>© 2025 Mora | Asesoría Digital</p>
+  </footer>
 
+  <a href="https://wa.me/573222438349" class="whatsapp-float" target="_blank">💬</a>
+
+  <script>
+    // Animación por scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
