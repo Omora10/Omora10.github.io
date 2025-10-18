@@ -9,57 +9,58 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #111;
+      background: linear-gradient(135deg, #6c3fb3, #1a1a1a);
       color: #fff;
       line-height: 1.6;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-
-    /* Hero Section */
     header {
-      position: relative;
       text-align: center;
-      padding: 120px 20px 100px;
+      padding: 100px 20px 60px;
       background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      position: relative;
     }
     header::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.6);
     }
-    header * { position: relative; z-index: 2; }
+    header * {
+      position: relative;
+      z-index: 2;
+    }
     header h1 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 15px;
-      animation: slideInLeft 1s ease forwards;
+      margin-bottom: 10px;
     }
     header p {
       font-size: 1.1rem;
       opacity: 0.9;
-      max-width: 650px;
+      max-width: 600px;
       margin: 0 auto;
-      animation: slideInRight 1.2s ease forwards;
     }
-
-    /* Sections */
     section {
       max-width: 900px;
-      margin: 60px auto;
-      background: rgba(255,255,255,0.05);
-      padding: 50px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
       border-radius: 20px;
       backdrop-filter: blur(6px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+      transform: translateY(30px);
+      transition: all 1s ease;
     }
     section.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    section:hover {
+      transform: translateY(-5px) scale(1.02);
+      transition: 0.4s ease;
     }
     h2 {
       color: #c4a3ff;
@@ -68,10 +69,10 @@
       border-left: 5px solid #c4a3ff;
       padding-left: 10px;
     }
-    ul, ol { margin-left: 20px; }
+    ul, ol {
+      margin-left: 20px;
+    }
     li { margin: 10px 0; }
-
-    /* Buttons */
     .btn {
       display: inline-block;
       background: #c4a3ff;
@@ -80,101 +81,127 @@
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
-      margin-top: 25px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 0 rgba(196,163,255,0.4);
+      margin-top: 20px;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
     .btn:hover {
       background: #fff;
       color: #6c3fb3;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(196,163,255,0.6);
+      transform: translateY(-3px);
     }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #25D366;
-      color: #fff;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(37,211,102,0.5);
-      animation: pulse 2.5s infinite;
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); }
-
     footer {
       text-align: center;
-      padding: 50px 20px;
-      background: #000;
+      padding: 40px 20px;
+      background: #111;
       color: #ccc;
       font-size: 0.9rem;
+      margin-top: 80px;
     }
     footer a {
       color: #c4a3ff;
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      border-radius: 20px;
-      margin-bottom: 25px;
+    /* Animación inicial */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Animations */
-    @keyframes slideInLeft {
-      from { transform: translateX(-80px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+    /* Bloque de contacto */
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
-    @keyframes slideInRight {
-      from { transform: translateX(80px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid #c4a3ff;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
     }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-      70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    .contact-btn:hover {
+      background: #c4a3ff;
+      color: #1a1a1a;
+      transform: translateY(-3px);
+    }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #20ba5a;
+    }
+
+    /* Imagen personal */
+    .profile-photo {
+      width: 280px;
+      border-radius: 20px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: none; }
     }
 
     @media (max-width: 600px) {
       header h1 { font-size: 2rem; }
-      section { padding: 30px; }
+      section { padding: 25px; }
     }
   </style>
 </head>
-
 <body>
 
   <header>
     <h1>Tu página web profesional, lista para despegar 🚀</h1>
     <p>Te ayudo a crear tu sitio desde cero con el hosting más rápido y seguro de <strong>Hostinger</strong>. 
       Obtén asesoría personalizada y un <strong>descuento exclusivo</strong>.</p>
-    <a class="btn" href="https://hostinger.co?REFERRALCODE=1ORLANDO93" target="_blank">🚀 Obtener descuento</a>
+    <a class="btn" href="https://hostinger.co?REFERRALCODE=1ORLANDO93" target="_blank">Obtener descuento</a>
   </header>
 
   <section>
     <h2>✨ ¿Por qué elegir Hostinger?</h2>
     <ul>
-      <li>⚡ Velocidad y estabilidad garantizadas para tu web.</li>
-      <li>🌍 Dominio gratis el primer año.</li>
-      <li>🧭 Panel fácil de usar, ideal para principiantes.</li>
-      <li>🎧 Soporte 24/7 en español.</li>
-      <li>🤝 Y si compras desde mi enlace, te ayudo a configurarlo paso a paso.</li>
+      <li>Velocidad y estabilidad garantizadas para tu web.</li>
+      <li>Dominio gratis el primer año.</li>
+      <li>Panel fácil de usar, ideal para principiantes.</li>
+      <li>Soporte 24/7 en español.</li>
+      <li>Y si compras desde mi enlace, te ayudo a configurarlo paso a paso.</li>
     </ul>
   </section>
 
   <section>
     <h2>👨‍💻 Sobre mí</h2>
-    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=600&q=80" alt="Asesor digital Mora">
+    <img src="Gemini_Generated_Image_65260q65260q6526.png" alt="Mora - Asesor Digital" class="profile-photo">
     <p>Soy <strong>Mora</strong>, desarrollador de software y asesor digital. 
        He acompañado a más de 500 emprendedores a lanzar sus sitios web, 
        tiendas online y portafolios personales.</p>
@@ -185,12 +212,21 @@
   <section>
     <h2>⚙️ Cómo funciona</h2>
     <ol>
-      <li>1️⃣ Ingresa al enlace y elige tu plan de hosting en Hostinger.</li>
-      <li>2️⃣ Contáctame para recibir acompañamiento en la configuración.</li>
-      <li>3️⃣ Tu sitio quedará listo para recibir clientes o mostrar tus proyectos.</li>
+      <li>Ingresa al enlace y elige tu plan de hosting en Hostinger.</li>
+      <li>Contáctame para recibir acompañamiento en la configuración.</li>
+      <li>Tu sitio quedará listo para recibir clientes o mostrar tus proyectos.</li>
     </ol>
     <div style="text-align:center;">
-      <a class="btn" href="https://hostinger.co?REFERRALCODE=1ORLANDO93" target="_blank">💸 Ir a Hostinger</a>
+      <a class="btn" href="https://hostinger.co?REFERRALCODE=1ORLANDO93" target="_blank">Ir a Hostinger</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>📲 Contáctame</h2>
+    <p style="text-align:center;">Elige el medio que prefieras, te responderé personalmente:</p>
+    <div class="contact-buttons">
+      <a class="contact-btn" href="mailto:moradostin27@gmail.com">📧 Enviar correo</a>
+      <a class="contact-btn" href="https://wa.me/573222438349" target="_blank">💬 WhatsApp directo</a>
     </div>
   </section>
 
@@ -201,24 +237,21 @@
     <p>© 2025 Mora | Asesoría Digital</p>
   </footer>
 
-  <a href="https://wa.me/573222438349" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20.52 3.48A11.78 11.78 0 0012 0a11.79 11.79 0 00-8.52 20.15L0 24l3.94-3.48A11.79 11.79 0 0012 24a11.78 11.78 0 008.52-20.52zM12 21.43a9.44 9.44 0 01-4.81-1.32l-.35-.21-2.85 2.52.77-3.72-.24-.38a9.46 9.46 0 1115.77-6.64A9.46 9.46 0 0112 21.43zm4.89-7.12c-.27-.14-1.61-.79-1.86-.88s-.43-.14-.61.14-.7.88-.86 1.06-.32.21-.59.07a7.71 7.71 0 01-2.27-1.4 8.45 8.45 0 01-1.57-1.93c-.17-.28 0-.44.13-.58.14-.14.31-.36.46-.54a2 2 0 00.31-.51.52.52 0 000-.49c-.07-.14-.61-1.47-.83-2s-.44-.45-.61-.46h-.52a1 1 0 00-.72.34 3 3 0 00-.95 2.21 5.16 5.16 0 001.1 2.76A11.77 11.77 0 0012 17a6.52 6.52 0 003.49 1 3 3 0 002-.68 2.48 2.48 0 00.85-1.83 1.61 1.61 0 00-.45-1.18c-.18-.17-.41-.27-.5-.31z"/>
-    </svg>
-  </a>
+<a href="https://wa.me/573222438349" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.78 11.78 0 0012 0a11.79 11.79 0 00-8.52 20.15L0 24l3.94-3.48A11.79 11.79 0 0012 24a11.78 11.78 0 008.52-20.52zM12 21.43a9.44 9.44 0 01-4.81-1.32l-.35-.21-2.85 2.52.77-3.72-.24-.38a9.46 9.46 0 1115.77-6.64A9.46 9.46 0 0112 21.43zm4.89-7.12c-.27-.14-1.61-.79-1.86-.88s-.43-.14-.61.14-.7.88-.86 1.06-.32.21-.59.07a7.71 7.71 0 01-2.27-1.4 8.45 8.45 0 01-1.57-1.93c-.17-.28 0-.44.13-.58.14-.14.31-.36.46-.54a2 2 0 00.31-.51.52.52 0 000-.49c-.07-.14-.61-1.47-.83-2s-.44-.45-.61-.46h-.52a1 1 0 00-.72.34 3 3 0 00-.95 2.21 5.16 5.16 0 001.1 2.76A11.77 11.77 0 0012 17a6.52 6.52 0 003.49 1 3 3 0 002-.68 2.48 2.48 0 00.85-1.83 1.61 1.61 0 00-.45-1.18c-.18-.17-.41-.27-.5-.31z"/>
+  </svg>
+</a>
 
   <script>
-    // Efecto de aparición al hacer scroll
-    const sections = document.querySelectorAll("section");
-    const showSection = () => {
-      const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const boxTop = sec.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) sec.classList.add("visible");
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    };
-    window.addEventListener("scroll", showSection);
-    showSection();
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
   </script>
+
 </body>
 </html>
