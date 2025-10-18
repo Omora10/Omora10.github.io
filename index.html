@@ -13,10 +13,12 @@
       color: #fff;
       line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
       padding: 100px 20px 60px;
+      animation: fadeSlideDown 1s ease forwards;
     }
     header h1 {
       font-size: 2.5rem;
@@ -37,6 +39,17 @@
       border-radius: 20px;
       backdrop-filter: blur(6px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section:hover {
+      transform: translateY(-5px) scale(1.02);
+      transition: 0.4s ease;
     }
     h2 {
       color: #c4a3ff;
@@ -58,11 +71,12 @@
       text-decoration: none;
       font-weight: 600;
       margin-top: 20px;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
     .btn:hover {
       background: #fff;
       color: #6c3fb3;
+      transform: translateY(-3px);
     }
     footer {
       text-align: center;
@@ -70,11 +84,70 @@
       background: #111;
       color: #ccc;
       font-size: 0.9rem;
+      margin-top: 80px;
     }
     footer a {
       color: #c4a3ff;
       text-decoration: none;
     }
+
+    /* Animación inicial */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Bloque de contacto */
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid #c4a3ff;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+    .contact-btn:hover {
+      background: #c4a3ff;
+      color: #1a1a1a;
+      transform: translateY(-3px);
+    }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #20ba5a;
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 2rem; }
       section { padding: 25px; }
@@ -122,12 +195,17 @@
     </div>
   </section>
 
+  <section>
+    <h2>📲 Contáctame</h2>
+    <p style="text-align:center;">Elige el medio que prefieras, te responderé personalmente:</p>
+    <div class="contact-buttons">
+      <a class="contact-btn" href="mailto:moradostin27@gmail.com">📧 Enviar correo</a>
+      <a class="contact-btn" href="https://wa.me/573222438349" target="_blank">💬 WhatsApp directo</a>
+    </div>
+  </section>
+
   <footer>
     <p>¿Tienes dudas o quieres mi ayuda para elegir tu plan?</p>
     <p>📧 <a href="mailto:moradostin27@gmail.com">moradostin27@gmail.com</a>  
-    | 📱 WhatsApp: 322 243 8349</p>
-    <p>© 2025 Mora | Asesoría Digital</p>
-  </footer>
+    | 📱 Whats
 
-</body>
-</html>
